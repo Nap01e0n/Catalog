@@ -1,97 +1,97 @@
-CREATE TABLE Диск ( 
-Код_диску INTEGER NOT NULL, 
-Назва VARCHAR(50) NOT NULL, 
-Фото VARCHAR(50),
-Ціна MONEY NOT NULL CHECK(Ціна > 0),
-Дата_випуску DATE NOT NULL,
-Текст_опису VARCHAR(255),
-PRIMARY KEY (Код_диску) ); 
+п»їCREATE TABLE Р”РёСЃРє ( 
+РљРѕРґ_РґРёСЃРєСѓ INTEGER NOT NULL, 
+РќР°Р·РІР° VARCHAR(50) NOT NULL, 
+Р¤РѕС‚Рѕ VARCHAR(50),
+Р¦С–РЅР° MONEY NOT NULL CHECK(Р¦С–РЅР° > 0),
+Р”Р°С‚Р°_РІРёРїСѓСЃРєСѓ DATE NOT NULL,
+РўРµРєСЃС‚_РѕРїРёСЃСѓ VARCHAR(255),
+PRIMARY KEY (РљРѕРґ_РґРёСЃРєСѓ) ); 
 
-CREATE TABLE Жанр ( 
-Код_жанру INTEGER NOT NULL, 
-Назва VARCHAR(15) NOT NULL, 
-Напрям VARCHAR(30),
-Дата_зародження DATE NOT NULL,
-Місце_зародження VARCHAR(50),
-Опис_жанру VARCHAR(255),
-PRIMARY KEY (Код_жанру) ); 
+CREATE TABLE Р–Р°РЅСЂ ( 
+РљРѕРґ_Р¶Р°РЅСЂСѓ INTEGER NOT NULL, 
+РќР°Р·РІР° VARCHAR(15) NOT NULL, 
+РќР°РїСЂСЏРј VARCHAR(30),
+Р”Р°С‚Р°_Р·Р°СЂРѕРґР¶РµРЅРЅСЏ DATE NOT NULL,
+РњС–СЃС†Рµ_Р·Р°СЂРѕРґР¶РµРЅРЅСЏ VARCHAR(50),
+РћРїРёСЃ_Р¶Р°РЅСЂСѓ VARCHAR(255),
+PRIMARY KEY (РљРѕРґ_Р¶Р°РЅСЂСѓ) ); 
 
-CREATE TABLE Пісня ( 
-Код_пісні INTEGER NOT NULL, 
-Назва VARCHAR(50) NOT NULL, 
-Тривалість INTEGER NOT NULL CHECK(Тривалість > 0),
-Жанр INTEGER NOT NULL,
-Дата_випуску DATE NOT NULL,
-PRIMARY KEY (Код_пісні),
-CONSTRAINT ФКжанр FOREIGN KEY (Жанр)
-REFERENCES Жанр(Код_жанру) ON DELETE CASCADE ON UPDATE CASCADE);
+CREATE TABLE РџС–СЃРЅСЏ ( 
+РљРѕРґ_РїС–СЃРЅС– INTEGER NOT NULL, 
+РќР°Р·РІР° VARCHAR(50) NOT NULL, 
+РўСЂРёРІР°Р»С–СЃС‚СЊ INTEGER NOT NULL CHECK(РўСЂРёРІР°Р»С–СЃС‚СЊ > 0),
+Р–Р°РЅСЂ INTEGER NOT NULL,
+Р”Р°С‚Р°_РІРёРїСѓСЃРєСѓ DATE NOT NULL,
+PRIMARY KEY (РљРѕРґ_РїС–СЃРЅС–),
+CONSTRAINT Р¤РљР¶Р°РЅСЂ FOREIGN KEY (Р–Р°РЅСЂ)
+REFERENCES Р–Р°РЅСЂ(РљРѕРґ_Р¶Р°РЅСЂСѓ) ON DELETE CASCADE ON UPDATE CASCADE);
 
-CREATE TABLE Соліст( 
-Код_соліста INTEGER NOT NULL, 
-[Ім’я] VARCHAR(30) NOT NULL, 
-Прізвище VARCHAR(30),
-Псевдонім VARCHAR(30),
-Дата_народження DATE NOT NULL,
-Країна_народження VARCHAR(30),
-Мова_виконання VARCHAR(20),
-Фото VARCHAR(50),
-Посилання VARCHAR(100),
-PRIMARY KEY (Код_соліста) ); 
+CREATE TABLE РЎРѕР»С–СЃС‚( 
+РљРѕРґ_СЃРѕР»С–СЃС‚Р° INTEGER NOT NULL, 
+[Р†РјвЂ™СЏ] VARCHAR(30) NOT NULL, 
+РџСЂС–Р·РІРёС‰Рµ VARCHAR(30),
+РџСЃРµРІРґРѕРЅС–Рј VARCHAR(30),
+Р”Р°С‚Р°_РЅР°СЂРѕРґР¶РµРЅРЅСЏ DATE NOT NULL,
+РљСЂР°С—РЅР°_РЅР°СЂРѕРґР¶РµРЅРЅСЏ VARCHAR(30),
+РњРѕРІР°_РІРёРєРѕРЅР°РЅРЅСЏ VARCHAR(20),
+Р¤РѕС‚Рѕ VARCHAR(50),
+РџРѕСЃРёР»Р°РЅРЅСЏ VARCHAR(100),
+PRIMARY KEY (РљРѕРґ_СЃРѕР»С–СЃС‚Р°) ); 
 
-CREATE TABLE Група ( 
-Код_групи INTEGER NOT NULL, 
-Назва VARCHAR(50) NOT NULL, 
-Дата_заснування DATE,
-Країна_заснування VARCHAR(30) NOT NULL, 
-Мова_виконання VARCHAR(30) NOT NULL, 
-Посилання VARCHAR(100),
-PRIMARY KEY (Код_групи) ); 
+CREATE TABLE Р“СЂСѓРїР° ( 
+РљРѕРґ_РіСЂСѓРїРё INTEGER NOT NULL, 
+РќР°Р·РІР° VARCHAR(50) NOT NULL, 
+Р”Р°С‚Р°_Р·Р°СЃРЅСѓРІР°РЅРЅСЏ DATE,
+РљСЂР°С—РЅР°_Р·Р°СЃРЅСѓРІР°РЅРЅСЏ VARCHAR(30) NOT NULL, 
+РњРѕРІР°_РІРёРєРѕРЅР°РЅРЅСЏ VARCHAR(30) NOT NULL, 
+РџРѕСЃРёР»Р°РЅРЅСЏ VARCHAR(100),
+PRIMARY KEY (РљРѕРґ_РіСЂСѓРїРё) ); 
 
-CREATE TABLE Учасник_групи ( 
-Код_учасника INTEGER NOT NULL, 
-[Ім’я] VARCHAR(30) NOT NULL,  
-Прізвище VARCHAR(30) NOT NULL,  
-Дата_народження DATE NOT NULL,  
-Країна_народження VARCHAR(30),
-Код_групи INTEGER NOT NULL,
-Фото VARCHAR(50),
-Посилання VARCHAR(100),
-PRIMARY KEY (Код_учасника) ); 
+CREATE TABLE РЈС‡Р°СЃРЅРёРє_РіСЂСѓРїРё ( 
+РљРѕРґ_СѓС‡Р°СЃРЅРёРєР° INTEGER NOT NULL, 
+[Р†РјвЂ™СЏ] VARCHAR(30) NOT NULL,  
+РџСЂС–Р·РІРёС‰Рµ VARCHAR(30) NOT NULL,  
+Р”Р°С‚Р°_РЅР°СЂРѕРґР¶РµРЅРЅСЏ DATE NOT NULL,  
+РљСЂР°С—РЅР°_РЅР°СЂРѕРґР¶РµРЅРЅСЏ VARCHAR(30),
+РљРѕРґ_РіСЂСѓРїРё INTEGER NOT NULL,
+Р¤РѕС‚Рѕ VARCHAR(50),
+РџРѕСЃРёР»Р°РЅРЅСЏ VARCHAR(100),
+PRIMARY KEY (РљРѕРґ_СѓС‡Р°СЃРЅРёРєР°) ); 
 
-CREATE TABLE Контракт(
-Код_контракту  INTEGER NOT NULL,
- Код_групи INTEGER NOT NULL,
- Код_учасника INTEGER NOT NULL,
- Дата_заключення DATE NOT NULL,
- Дата_закінчення DATE NOT NULL,
- Роль_в_групі VARCHAR(15),
- PRIMARY KEY (Код_контракту ),
- CONSTRAINT ФК_група_
- FOREIGN KEY (Код_групи  )
- REFERENCES Група
+CREATE TABLE РљРѕРЅС‚СЂР°РєС‚(
+РљРѕРґ_РєРѕРЅС‚СЂР°РєС‚Сѓ  INTEGER NOT NULL,
+ РљРѕРґ_РіСЂСѓРїРё INTEGER NOT NULL,
+ РљРѕРґ_СѓС‡Р°СЃРЅРёРєР° INTEGER NOT NULL,
+ Р”Р°С‚Р°_Р·Р°РєР»СЋС‡РµРЅРЅСЏ DATE NOT NULL,
+ Р”Р°С‚Р°_Р·Р°РєС–РЅС‡РµРЅРЅСЏ DATE NOT NULL,
+ Р РѕР»СЊ_РІ_РіСЂСѓРїС– VARCHAR(15),
+ PRIMARY KEY (РљРѕРґ_РєРѕРЅС‚СЂР°РєС‚Сѓ ),
+ CONSTRAINT Р¤Рљ_РіСЂСѓРїР°_
+ FOREIGN KEY (РљРѕРґ_РіСЂСѓРїРё  )
+ REFERENCES Р“СЂСѓРїР°
  ON DELETE CASCADE
  ON UPDATE CASCADE,
- CONSTRAINT ФК_учасник_групи
- FOREIGN KEY (Код_учасника )
- REFERENCES Учасник_групи
+ CONSTRAINT Р¤Рљ_СѓС‡Р°СЃРЅРёРє_РіСЂСѓРїРё
+ FOREIGN KEY (РљРѕРґ_СѓС‡Р°СЃРЅРёРєР° )
+ REFERENCES РЈС‡Р°СЃРЅРёРє_РіСЂСѓРїРё
  ON DELETE CASCADE
  ON UPDATE CASCADE,
 );
 
-CREATE TABLE Каталог ( 
-Код_каталогу INTEGER NOT NULL, 
-Назва_каталогу VARCHAR(30) NOT NULL,  
-Дата_створення DATE NOT NULL,
-Код_диску INTEGER NOT NULL, 
-Код_пісні INTEGER NOT NULL, 
-Код_соліста INTEGER,
-Код_групи INTEGER,
-PRIMARY KEY (Код_каталогу),
-CONSTRAINT ФК_диск FOREIGN KEY (Код_диску)
-REFERENCES Диск ON DELETE CASCADE ON UPDATE CASCADE,
-CONSTRAINT ФК_пісня FOREIGN KEY (Код_пісні)
-REFERENCES Пісня ON DELETE CASCADE ON UPDATE CASCADE,
-CONSTRAINT ФК_соліст FOREIGN KEY (Код_соліста)
-REFERENCES Соліст ON DELETE CASCADE ON UPDATE CASCADE,
-CONSTRAINT ФК_група FOREIGN KEY (Код_групи)
-REFERENCES Група ON DELETE CASCADE ON UPDATE CASCADE);
+CREATE TABLE РљР°С‚Р°Р»РѕРі ( 
+РљРѕРґ_РєР°С‚Р°Р»РѕРіСѓ INTEGER NOT NULL, 
+РќР°Р·РІР°_РєР°С‚Р°Р»РѕРіСѓ VARCHAR(30) NOT NULL,  
+Р”Р°С‚Р°_СЃС‚РІРѕСЂРµРЅРЅСЏ DATE NOT NULL,
+РљРѕРґ_РґРёСЃРєСѓ INTEGER NOT NULL, 
+РљРѕРґ_РїС–СЃРЅС– INTEGER NOT NULL, 
+РљРѕРґ_СЃРѕР»С–СЃС‚Р° INTEGER,
+РљРѕРґ_РіСЂСѓРїРё INTEGER,
+PRIMARY KEY (РљРѕРґ_РєР°С‚Р°Р»РѕРіСѓ),
+CONSTRAINT Р¤Рљ_РґРёСЃРє FOREIGN KEY (РљРѕРґ_РґРёСЃРєСѓ)
+REFERENCES Р”РёСЃРє ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT Р¤Рљ_РїС–СЃРЅСЏ FOREIGN KEY (РљРѕРґ_РїС–СЃРЅС–)
+REFERENCES РџС–СЃРЅСЏ ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT Р¤Рљ_СЃРѕР»С–СЃС‚ FOREIGN KEY (РљРѕРґ_СЃРѕР»С–СЃС‚Р°)
+REFERENCES РЎРѕР»С–СЃС‚ ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT Р¤Рљ_РіСЂСѓРїР° FOREIGN KEY (РљРѕРґ_РіСЂСѓРїРё)
+REFERENCES Р“СЂСѓРїР° ON DELETE CASCADE ON UPDATE CASCADE);
